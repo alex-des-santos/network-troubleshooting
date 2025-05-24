@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Não Encontrada - Guia de Diagnóstico de Rede</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f4;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-6 text-stone-800">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-xl p-8 text-center">
+        <div class="text-7xl mb-6 pulse">🔍</div>
+        <h1 class="text-3xl font-bold text-sky-700 mb-4">Página Não Encontrada</h1>
+        <p class="mb-6 text-stone-600">A página que você está procurando parece estar desconectada.</p>
+        <a href="/" class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-medium py-3 px-6 rounded-lg shadow transition-colors duration-150">
+            Voltar para o Diagnóstico
+        </a>
+    </div>
+    
+    <footer class="mt-12 text-center text-sm text-stone-500">
+        <p>&copy; <span id="current-year"></span> Guia Interativo de Diagnóstico de Rede</p>
+    </footer>
+    
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

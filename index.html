@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Guia Interativo de Diagnóstico de Rede Doméstica - Uma ferramenta para ajudar a identificar e resolver problemas de rede em casa" />
+    <title>Guia Interativo de Diagnóstico de Rede Doméstica</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <!-- Preconnect to improve loading performance -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-stone-100 text-stone-800 min-h-screen flex flex-col items-center py-8 px-4 selection:bg-sky-200 selection:text-sky-800">
+    <div class="w-full max-w-2xl bg-white shadow-xl rounded-lg p-6 md:p-8">
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-sky-700">Guia Interativo de Diagnóstico de Rede Doméstica</h1>
+            <p class="mt-2 text-stone-600">Siga os passos para identificar e resolver problemas comuns de rede.</p>
+        </header>
+
+        <main>
+            <section id="diagnostic-tool" class="mb-8">
+                <div id="current-step-display" class="bg-slate-50 p-6 rounded-lg shadow">
+                    <div id="question-area" class="text-lg font-semibold mb-4 text-stone-700"></div>
+                    <div id="details-area" class="text-sm text-stone-600 mb-6"></div>
+                    <div id="options-area" class="space-y-3"></div>
+                </div>
+            </section>
+
+            <section id="info-sections" class="space-y-4 mb-8">
+                <div>
+                    <button id="toggle-concepts" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-4 rounded-lg shadow transition-colors duration-150 flex justify-between items-center">
+                        <span>📘 Conceitos Essenciais de Rede</span>
+                        <span class="transform transition-transform duration-300" id="concepts-arrow">▼</span>
+                    </button>
+                    <div id="concepts-content" class="content-section mt-2 p-4 bg-slate-100 rounded-lg shadow-inner prose prose-sm max-w-none">
+                        <p class="italic text-sm text-stone-600 mb-4">Entender estes termos básicos pode ajudar no diagnóstico. Clique nos títulos para expandir.</p>
+                        
+                        <details class="mb-3 p-2 rounded bg-white shadow">
+                            <summary class="font-semibold cursor-pointer text-sky-700 hover:text-sky-800">Endereços IP (Público, Privado, Estático, Dinâmico)</summary>
+                            <div class="mt-2 pl-4 border-l-2 border-sky-200">
+                                <p><strong>O que é um endereço IP:</strong> Um identificador numérico único para cada dispositivo numa rede, como um endereço postal para dados.</p>
+                                <p><strong>IP Público vs. Privado:</strong> Seu router usa um IP público (único na Internet, fornecido pelo ISP) para se comunicar globalmente. Dispositivos na sua rede doméstica (LAN) usam IPs privados (ex: 192.168.1.100), que não são únicos na Internet e podem ser reutilizados em outras redes privadas.</p>
+                                <p><strong>IP Dinâmico vs. Estático:</strong> Um IP dinâmico é atribuído automaticamente e pode mudar (comum para utilizadores domésticos). Um IP estático é configurado manualmente e permanece o mesmo (menos comum para dispositivos finais, usado para servidores).</p>
+                            </div>
+                        </details>
+
+                        <details class="mb-3 p-2 rounded bg-white shadow">
+                            <summary class="font-semibold cursor-pointer text-sky-700 hover:text-sky-800">DHCP Explicado (Dynamic Host Configuration Protocol)</summary>
+                            <div class="mt-2 pl-4 border-l-2 border-sky-200">
+                                <p>O DHCP automatiza a atribuição de endereços IP e outras configurações de rede (servidor DNS, gateway) aos dispositivos.</p>
+                                <p><strong>Como funciona (simplificado):</strong> Ao ligar um dispositivo, ele pede um IP. O servidor DHCP (geralmente no router) oferece um IP disponível e configurações. Se o dispositivo aceitar, a configuração é concedida por um tempo ("lease").</p>
+                                <p><strong>Relevância:</strong> Falhas no DHCP impedem que dispositivos obtenham IPs válidos, causando problemas de ligação.</p>
+                            </div>
+                        </details>
+
+                        <details class="p-2 rounded bg-white shadow">
+                            <summary class="font-semibold cursor-pointer text-sky-700 hover:text-sky-800">Compreender SSIDs (Nomes de Rede Wi-Fi)</summary>
+                            <div class="mt-2 pl-4 border-l-2 border-sky-200">
+                                <p>SSID (Service Set Identifier) é o nome público da sua rede Wi-Fi que aparece na lista de redes disponíveis (ex: "CasaSilva_WiFi").</p>
+                                <p><strong>Como é usado:</strong> Routers transmitem o SSID para que dispositivos próximos o detetem.</p>
+                                <p><strong>Importância:</strong> Ligar-se ao SSID correto com a palavra-passe correta é o primeiro passo para aceder a uma rede Wi-Fi. Problemas podem surgir se o SSID estiver oculto, configurado incorretamente, ou se houver nomes semelhantes.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <div>
+                    <button id="toggle-tools" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-4 rounded-lg shadow transition-colors duration-150 flex justify-between items-center">
+                        <span>🛠️ Ferramentas Básicas de Diagnóstico</span>
+                        <span class="transform transition-transform duration-300" id="tools-arrow">▼</span>
+                    </button>
+                    <div id="tools-content" class="content-section mt-2 p-4 bg-slate-100 rounded-lg shadow-inner prose prose-sm max-w-none">
+                         <p class="italic text-sm text-stone-600 mb-4">Estas ferramentas podem ajudar a testar a sua ligação. Clique nos títulos para expandir.</p>
+
+                        <details class="mb-3 p-2 rounded bg-white shadow">
+                            <summary class="font-semibold cursor-pointer text-sky-700 hover:text-sky-800">Utilizar `ping`</summary>
+                            <div class="mt-2 pl-4 border-l-2 border-sky-200">
+                                <p>O comando `ping` envia pequenos pacotes de dados para um destino (IP ou nome de site) e espera uma resposta. Ajuda a verificar se um dispositivo está alcançável e mede o tempo de resposta (latência).</p>
+                                <p><strong>Exemplos:</strong> No terminal ou linha de comandos, digite <code>ping www.google.com</code> ou <code>ping 192.168.1.1</code> (para testar o router).</p>
+                                <p><strong>Interpretação:</strong> Respostas bem-sucedidas indicam conectividade. "Request timed out" ou falhas indicam problemas. A latência (tempo em ms) mostra a rapidez.</p>
+                            </div>
+                        </details>
+
+                        <details class="p-2 rounded bg-white shadow">
+                            <summary class="font-semibold cursor-pointer text-sky-700 hover:text-sky-800">Utilizar `tracert` (ou `traceroute`)</summary>
+                            <div class="mt-2 pl-4 border-l-2 border-sky-200">
+                                <p>Este comando mostra o caminho (sequência de routers ou "saltos") que os dados percorrem do seu computador até um destino. Útil para identificar onde uma ligação pode estar a falhar.</p>
+                                <p><strong>Exemplos:</strong> No Windows, <code>tracert www.google.com</code>. No macOS/Linux, <code>traceroute www.google.com</code>.</p>
+                                <p><strong>Interpretação:</strong> Mostra cada "salto". Tempos altos ou falhas num salto específico podem indicar a origem do problema.</p>
+                            </div>
+                        </details>
+                         <p class="mt-4 text-xs text-stone-500">Existem também aplicações como o Fing (para telemóvel e desktop) que podem ajudar a descobrir dispositivos na sua rede e testar a velocidade, mas estas são ferramentas mais avançadas.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="text-center mt-8">
+                 <button id="restart-button" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg shadow transition-colors duration-150">
+                    🔄 Reiniciar Diagnóstico
+                </button>
+            </div>
+        </main>
+
+        <footer class="mt-12 pt-6 border-t border-stone-300 text-center">
+            <p class="text-sm text-stone-500">&copy; <span id="current-year"></span> Guia Interativo. Adaptado para fins demonstrativos.</p>
+        </footer>
+    </div>
+
+    <script src="js/diagnostic-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
